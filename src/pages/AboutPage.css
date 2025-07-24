@@ -171,34 +171,119 @@ nav a:hover {
 }
 
 .team-section {
-  margin-top: 4rem;
-}
-
-.team-grid {
-  display: flex;
-  gap: 2rem;
-  margin-top: 2rem;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.team-member {
-  text-align: center;
-  flex: 1 1 250px;
-  background: white;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.team-photo {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 1rem;
-}
-
+      padding: 4rem 2rem;
+      background: #f8f9fa;
+    }
+    
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      padding: 2.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .team-section h2 {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      color: #2c3e50;
+    }
+    
+    .team-description {
+      text-align: center;
+      color: #7f8c8d;
+      margin-bottom: 3rem;
+      font-size: 1.1rem;
+    }
+    
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      justify-items: center;
+    }
+    
+    .team-member {
+      text-align: center;
+      transition: all 0.3s ease;
+      padding: 1.5rem;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    
+    .team-member:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+    
+    .member-image-container {
+      position: relative;
+      width: 150px;
+      height: 150px;
+      margin: 0 auto 1.5rem;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid #e0e0e0;
+    }
+    
+    .team-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.3s ease;
+    }
+    
+    .linkedin-link {
+      position: absolute;
+      bottom: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: all 0.3s ease;
+      background: #0077b5;
+      padding: 8px;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .linkedin-icon {
+      width: 20px;
+      height: 20px;
+      filter: brightness(0) invert(1);
+    }
+    
+    .team-member:hover .linkedin-link {
+      bottom: 10px;
+      opacity: 1;
+    }
+    
+    .team-member:hover .team-photo {
+      filter: brightness(0.9);
+    }
+    
+    .team-member h4 {
+      margin: 0.5rem 0;
+      color: #2c3e50;
+      font-size: 1.3rem;
+    }
+    
+    .team-member p {
+      margin: 0.3rem 0;
+      color: #7f8c8d;
+      font-size: 0.95rem;
+    }
+    
+    .team-member p:last-child {
+      color: #95a5a6;
+      font-size: 0.85rem;
+    }
 .footer {
   text-align: center;
   padding: 2rem;

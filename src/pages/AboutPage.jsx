@@ -4,18 +4,20 @@ import { Link } from 'react-router-dom';
 
 const AboutPage = () => {
   return (
-    <div>
-      <header>
+    <div className="about-page">
+      <header className="about-header">
         <div className="title">
           <h1>ConnectAll</h1>
           <p>Bridge Between Students and Alumni</p>
         </div>
         <div className="header-buttons">
-          <button className="signin-btn" onClick={() => alert('Sign In Modal Here')}>Sign In</button>
+          <button className="signin-btn" onClick={() => alert('Sign In Modal Here')}>
+            Sign In
+          </button>
         </div>
       </header>
 
-      <nav>
+      <nav className="about-nav">
         <Link to="/">Home</Link>
         <a href="#about">About</a>
         <a href="#colleges">Colleges</a>
@@ -74,96 +76,135 @@ const AboutPage = () => {
             We currently support students and alumni from these prestigious engineering institutions across India:
           </p>
 
+          {/* IITs Section */}
           <div className="college-category">
             <h3>Indian Institutes of Technology (IITs)</h3>
             <div className="college-grid">
-              <div className="college-item">
-                <img src="https://images.unsplash.com/photo-1622542796254-5b9c46ab0d2f" alt="IIT Bombay" className="college-img" />
-                <div className="college-info">
-                  <h4>IIT Bombay</h4>
-                  <p>Mumbai, Maharashtra</p>
+              {[
+                {
+                  name: "IIT Bombay",
+                  location: "Mumbai, Maharashtra",
+                  img: "https://wallpaperaccess.com/full/8410990.jpg",
+                  alumniCount: "15,000+"
+                },
+                {
+                  name: "IIT Delhi",
+                  location: "New Delhi",
+                  img: "https://wallpaperaccess.com/full/8411095.jpg",
+                  alumniCount: "12,500+"
+                },
+                {
+                  name: "IIT Madras",
+                  location: "Chennai, Tamil Nadu",
+                  img: "https://tse2.mm.bing.net/th/id/OIP.8AIRgycPTL6jgoTjkC4SYgHaEK?w=1920&h=1080&rs=1&pid=ImgDetMain&o=7&rm=3",
+                  alumniCount: "13,200+"
+                }
+              ].map((college, index) => (
+                <div className="college-item" key={index}>
+                  <img src={college.img} alt={college.name} className="college-img" />
+                  <div className="college-info">
+                    <h4>{college.name}</h4>
+                    <p>{college.location}</p>
+                    <Link 
+                      to={`/colleges/${college.name.toLowerCase().replace(/\s+/g, '-')}`} 
+                      className="college-details-link"
+                    >
+                      View {college.alumniCount} Alumni Network & Details →
+                    </Link>
+                  </div>
                 </div>
-              </div>
-              <div className="college-item">
-                <img src="https://images.unsplash.com/photo-1589998059171-988d887df646" alt="IIT Delhi" className="college-img" />
-                <div className="college-info">
-                  <h4>IIT Delhi</h4>
-                  <p>New Delhi</p>
-                </div>
-              </div>
-              <div className="college-item">
-                <img src="https://images.unsplash.com/photo-1562774053-701939374585" alt="IIT Madras" className="college-img" />
-                <div className="college-info">
-                  <h4>IIT Madras</h4>
-                  <p>Chennai, Tamil Nadu</p>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
 
+          {/* NITs Section */}
           <div className="college-category">
             <h3>National Institutes of Technology (NITs)</h3>
             <div className="college-grid">
-              <div className="college-item">
-                <img src="https://images.unsplash.com/photo-1541178735493-479c1a27ed24" alt="NIT Trichy" className="college-img" />
-                <div className="college-info">
-                  <h4>NIT Trichy</h4>
-                  <p>Tamil Nadu</p>
+              {[
+                {
+                  name: "NIT Kurukshetra",
+                  location: "Haryana",
+                  img: "https://images.collegedunia.com/public/college_data/images/appImage/22485_SETH_APP.jpg?h=250&w=1000&mode=crop",
+                  alumniCount: "8,500+"
+                },
+                {
+                  name: "NIT Surathkal",
+                  location: "Karnataka",
+                  img: "https://img.jagranjosh.com/images/2022/April/1442022/118282133_3209429542466983_2931716677706882742_n.jpg",
+                  alumniCount: "9,200+"
+                },
+                {
+                  name: "NIT Durgapur",
+                  location: "Durgapur, West Bengal",
+                  img: "https://img.jagranjosh.com/imported/images/E/Articles/NIT-Durgapur.jpg",
+                  alumniCount: "7,800+"
+                },
+                {
+                  name: "NIT Delhi",
+                  location: "Delhi",
+                  img: "https://tse1.mm.bing.net/th/id/OIP.lIGTT0w56Obun4V97e1kGwHaEK?rs=1&pid=ImgDetMain&o=7&rm=3",
+                  alumniCount: "6,500+"
+                }
+              ].map((college, index) => (
+                <div className="college-item" key={index}>
+                  <img src={college.img} alt={college.name} className="college-img" />
+                  <div className="college-info">
+                    <h4>{college.name}</h4>
+                    <p>{college.location}</p>
+                    <Link 
+                      to={`/colleges/${college.name.toLowerCase().replace(/\s+/g, '-')}`} 
+                      className="college-details-link"
+                    >
+                      View {college.alumniCount} Alumni Network & Details →
+                    </Link>
+                  </div>
                 </div>
-              </div>
-              <div className="college-item">
-                <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7" alt="NIT Surathkal" className="college-img" />
-                <div className="college-info">
-                  <h4>NIT Surathkal</h4>
-                  <p>Karnataka</p>
-                </div>
-              </div>
-              <div className="college-item">
-                <img src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="NIT Warangal" class="college-img" />
-                <div className="college-info">
-                  <h4>NIT Warangal</h4>
-                  <p>Warangal, Telangana</p>
-                </div>
-              </div>
-              <div className="college-item">
-                <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="NIT Rourkela" class="college-img" />
-                <div className="college-info">
-                  <h4>NIT Rourkela</h4>
-                  <p>Rourkela, Odisha</p>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
 
-           <div className="college-category">
+          {/* IIITs Section */}
+          <div className="college-category">
             <h3>IIITs and Other Premier Institutions</h3>
             <div className="college-grid">
-              <div className="college-item">
-                <img src="https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="IIIT Hyderabad" class="college-img" />
-                <div className="college-info">
-                  <h4>IIIT Hyderabad</h4>
-                  <p>Hyderabad, Telangana</p>
+              {[
+                {
+                  name: "IIIT Hyderabad",
+                  location: "Hyderabad, Telangana",
+                  img: "https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                  alumniCount: "5,600+"
+                },
+                {
+                  name: "IIIT Allahabad",
+                  location: "Allahabad, Uttar Pradesh",
+                  img: "https://images.shiksha.com/mediadata/images/articles/1644994436phpSQUiNh.jpeg",
+                  alumniCount: "4,900+"
+                },
+                {
+                  name: "UEM Kolkata",
+                  location: "Kolkata, West Bengal",
+                  img: "https://mba.icnn.in/wp-content/uploads/2021/09/uem-kolkata-1.png",
+                  alumniCount: "3,200+"
+                }
+              ].map((college, index) => (
+                <div className="college-item" key={index}>
+                  <img src={college.img} alt={college.name} className="college-img" />
+                  <div className="college-info">
+                    <h4>{college.name}</h4>
+                    <p>{college.location}</p>
+                    <Link 
+                      to={`/colleges/${college.name.toLowerCase().replace(/\s+/g, '-')}`} 
+                      className="college-details-link"
+                    >
+                      View {college.alumniCount} Alumni Network & Details →
+                    </Link>
+                  </div>
                 </div>
-              </div>
-              <div className="college-item">
-                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="IIIT Bangalore" class="college-img" />
-                <div className="college-info">
-                  <h4>IIIT Allahabad</h4>
-                  <p>Allahabad , Uttar Pradesh</p>
-                </div>
-              </div>
-              <div className="college-item">
-                <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="BITS Pilani" class="college-img" />
-                <div className="college-info">
-                  <h4>BITS Pilani</h4>
-                  <p>Pilani, Rajasthan</p>
-                </div>
-              </div>
-               </div>
+              ))}
+            </div>
           </div>
-
         </section>
-
 
         <section id="team" className="team-section">
           <div className="card">
@@ -171,29 +212,50 @@ const AboutPage = () => {
             <p>The passionate people behind ConnectAll who are working to transform engineering education in India</p>
             <div className="team-grid">
               <div className="team-member">
-                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Rahul Sharma" className="team-photo" />
-                <h4>Rahul Sharma</h4>
+                <div className="member-image-container">
+                  <img src="My love.jpg" alt="Pragya Shree" className="team-photo" />
+                  <a href="https://www.linkedin.com/in/pragya-shree-013271279/" className="linkedin-link" target="_blank" rel="noopener noreferrer">
+                    <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" className="linkedin-icon" />
+                  </a>
+                </div>
+                <h4>Pragya Shree</h4>
                 <p>Founder & CEO</p>
-                <p>IIT Bombay Alumnus</p>
+                <p>UEM</p>
               </div>
               <div className="team-member">
-                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Priya Patel" className="team-photo" />
-                <h4>Priya Patel</h4>
-                <p>CTO</p>
-                <p>IIIT Hyderabad Alumna</p>
+                <div className="member-image-container">
+                  <img src="deepak.jpg" alt="Deepak Kumar" className="team-photo" />
+                  <a href="https://www.linkedin.com/in/deepak-kumar-129a84339/" className="linkedin-link" target="_blank" rel="noopener noreferrer">
+                    <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" className="linkedin-icon" />
+                  </a>
+                </div>
+                <h4>Deepak Kumar</h4>
+                <p>CO-Founder</p>
+                <p>UEM</p>
+              </div>
+              <div className="team-member">
+                <div className="member-image-container">
+                  <img src="harsh.jpg" alt="Harsh Gaurav" className="team-photo" />
+                  <a href="https://www.linkedin.com/in/harsh-gaurav-156928370/" className="linkedin-link" target="_blank" rel="noopener noreferrer">
+                    <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" className="linkedin-icon" />
+                  </a>
+                </div>
+                <h4>Harsh Gaurav</h4>
+                <p>Marketing Lead</p>
+                <p>UEM</p>
               </div>
             </div>
           </div>
         </section>
       </div>
 
-      <div className="footer">
+      <footer className="footer">
         <div className="footer-links">
           <a href="#about">About Us</a>
           <a href="#contact">Contact</a>
         </div>
         <p>&copy; {new Date().getFullYear()} ConnectAll. All rights reserved.</p>
-      </div>
+      </footer>
     </div>
   );
 };
