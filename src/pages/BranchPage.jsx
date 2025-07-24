@@ -9,6 +9,7 @@ const BranchPage = () => {
     setSelectedBranch(branchId);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+  <nav> <Link to="Homepage.jsx">Home</Link></nav>
 
   const renderDetails = () => {
     const details = {
