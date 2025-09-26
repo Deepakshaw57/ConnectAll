@@ -9,7 +9,6 @@ const BranchPage = () => {
     setSelectedBranch(branchId);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
-  <nav> <Link to="Homepage.jsx">Home</Link></nav>
 
   const renderDetails = () => {
     const details = {
@@ -158,12 +157,12 @@ const BranchPage = () => {
     const branch = details[selectedBranch];
 
     return (
-      <div className="branch-details">
+      <div className="branch-details glass-card">
         <h2>{branch.title}</h2>
         <p>{branch.description}</p>
 
         <div className="details-grid">
-          <div className="details-card">
+          <div className="details-card glass-card">
             <h3>Core Subjects</h3>
             <ul>
               {branch.subjects?.map((subject, index) => (
@@ -172,7 +171,7 @@ const BranchPage = () => {
             </ul>
           </div>
 
-          <div className="details-card">
+          <div className="details-card glass-card">
             <h3>Career Opportunities</h3>
             <ul>
               {branch.careers?.map((career, index) => (
@@ -181,60 +180,73 @@ const BranchPage = () => {
             </ul>
           </div>
 
-          <div className="details-card">
+          <div className="details-card glass-card">
             <h3>Alumni Insights</h3>
             <p>{branch.alumni}</p>
           </div>
         </div>
 
-        <Link className="back-button" onClick={() => setSelectedBranch('')}>
+        <button className="back-button glass-btn" onClick={() => setSelectedBranch('')}>
           Back to Branches
-        </Link>
+        </button>
       </div>
     );
   };
 
   return (
-    <div className="container">
-      <Link to="/" className="back-button">Back to Home</Link>
+    <div className="branch-page">
+      {/* Space Background with Stars */}
+      <div className="space-background">
+        <div className="stars"></div>
+        <div className="stars-small"></div>
+        <div className="stars-tiny"></div>
+      </div>
 
-      {!selectedBranch ? (
-        <div id="branches-page">
-          <div className="card">
-            <h2>Engineering Branches</h2>
-            <p>
-              Explore the various engineering branches available and connect with alumni
-              from your specific field of study.
-            </p>
-          </div>
+      <nav className="branch-nav glass-nav">
+        <Link to="/" className="nav-link">Home</Link>
+        <a href="#branches" className="nav-link">Branches</a>
+      </nav>
 
-          <div className="branches-container">
-            {/* Cards for each branch */}
-            {[
-              { id: 'cse', title: 'Computer Science & Engineering (CSE)', desc: 'Focuses on computation, algorithms, programming languages...' },
-              { id: 'iot', title: 'CSE (Internet of Things)', desc: 'Specialization in IoT technologies, embedded systems, sensors...' },
-              { id: 'ai', title: 'CSE (Artificial Intelligence)', desc: 'Focuses on machine learning, neural networks, NLP, and AI systems.' },
-              { id: 'aiml', title: 'CSE (AI & Machine Learning)', desc: 'Advanced study of AI with emphasis on machine learning and data science.' },
-              { id: 'networking', title: 'CSE (Networking)', desc: 'Specialization in network architecture, security, and protocols.' },
-              { id: 'biotech', title: 'Biotechnology (BT)', desc: 'Application of biological processes in technology and industry.' },
-            ].map((branch) => (
-              <div className="branch-card" key={branch.id}>
-                <div className="branch-header">
-                  <h3>{branch.title}</h3>
+      <div className="container">
+        <Link to="/" className="back-button glass-btn">Back to Home</Link>
+
+        {!selectedBranch ? (
+          <div id="branches-page">
+            <div className="card glass-card">
+              <h2>Engineering Branches</h2>
+              <p>
+                Explore the various engineering branches available and connect with alumni
+                from your specific field of study.
+              </p>
+            </div>
+
+            <div className="branches-container">
+              {[
+                { id: 'cse', title: 'Computer Science & Engineering (CSE)', desc: 'Focuses on computation, algorithms, programming languages...' },
+                { id: 'iot', title: 'CSE (Internet of Things)', desc: 'Specialization in IoT technologies, embedded systems, sensors...' },
+                { id: 'ai', title: 'CSE (Artificial Intelligence)', desc: 'Focuses on machine learning, neural networks, NLP, and AI systems.' },
+                { id: 'aiml', title: 'CSE (AI & Machine Learning)', desc: 'Advanced study of AI with emphasis on machine learning and data science.' },
+                { id: 'networking', title: 'CSE (Networking)', desc: 'Specialization in network architecture, security, and protocols.' },
+                { id: 'biotech', title: 'Biotechnology (BT)', desc: 'Application of biological processes in technology and industry.' },
+              ].map((branch) => (
+                <div className="branch-card glass-card" key={branch.id}>
+                  <div className="branch-header glass-header">
+                    <h3>{branch.title}</h3>
+                  </div>
+                  <div className="branch-body">
+                    <p>{branch.desc}</p>
+                    <button className="branch-link glass-link" onClick={() => handleLearnMore(branch.id)}>
+                      Learn More →
+                    </button>
+                  </div>
                 </div>
-                <div className="branch-body">
-                  <p>{branch.desc}</p>
-                  <button className="branch-link" onClick={() => handleLearnMore(branch.id)}>
-                    Learn More →
-                  </button>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      ) : (
-        renderDetails()
-      )}
+        ) : (
+          renderDetails()
+        )}
+      </div>
     </div>
   );
 };

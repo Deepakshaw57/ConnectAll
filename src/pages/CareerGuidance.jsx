@@ -27,13 +27,25 @@ const CareerGuidance = () => {
 
   return (
     <div className="career-guidance-page">
-      <div className="career-header">
+      {/* Space Background with Stars */}
+      <div className="space-background">
+        <div className="stars"></div>
+        <div className="stars-small"></div>
+        <div className="stars-tiny"></div>
+      </div>
+
+      <nav className="career-nav glass-nav">
+        <a href="#services" className="nav-link">Services</a>
+        <a href="#testimonials" className="nav-link">Testimonials</a>
+      </nav>
+
+      <div className="career-header glass-card">
         <h1>Career Guidance Services</h1>
         <p>Get expert advice from alumni in your field of interest</p>
       </div>
 
-      <div className="services-container">
-        <div className="service-card">
+      <div className="services-container" id="services">
+        <div className="service-card glass-card">
           <div className="service-content">
             <h2>One-on-One Mentorship</h2>
             <p>
@@ -41,13 +53,13 @@ const CareerGuidance = () => {
               guidance tailored to your career goals and aspirations.
             </p>
             <button 
-              className="book-now-btn"
+              className="book-now-btn glass-btn"
               onClick={toggleSubscriptionModal}
             >
               Book Now
             </button>
           </div>
-          <div className="service-image">
+          <div className="service-image glass-image">
             <img 
               src="https://images.unsplash.com/photo-1573497491765-dccce02b29df?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
               alt="Mentorship" 
@@ -55,8 +67,8 @@ const CareerGuidance = () => {
           </div>
         </div>
 
-        <div className="service-card reverse">
-          <div className="service-image">
+        <div className="service-card reverse glass-card">
+          <div className="service-image glass-image">
             <img 
               src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
               alt="Resume Review" 
@@ -69,7 +81,7 @@ const CareerGuidance = () => {
               industry. Receive actionable feedback to make your application stand out.
             </p>
             <button 
-              className="book-now-btn"
+              className="book-now-btn glass-btn"
               onClick={toggleSubscriptionModal}
             >
               Book Now
@@ -77,7 +89,7 @@ const CareerGuidance = () => {
           </div>
         </div>
 
-        <div className="service-card">
+        <div className="service-card glass-card">
           <div className="service-content">
             <h2>Mock Interviews</h2>
             <p>
@@ -85,13 +97,13 @@ const CareerGuidance = () => {
               feedback on your performance and areas for improvement.
             </p>
             <button 
-              className="book-now-btn"
+              className="book-now-btn glass-btn"
               onClick={toggleSubscriptionModal}
             >
               Book Now
             </button>
           </div>
-          <div className="service-image">
+          <div className="service-image glass-image">
             <img 
               src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
               alt="Mock Interview" 
@@ -101,10 +113,10 @@ const CareerGuidance = () => {
       </div>
 
       {/* Testimonials Section */}
-      <div className="testimonials-section">
+      <div className="testimonials-section" id="testimonials">
         <h2>What Our Users Say</h2>
         <div className="testimonials-grid">
-          <div className="testimonial-card">
+          <div className="testimonial-card glass-card">
             <p>
               "The mock interview service helped me land my dream job at Google. 
               My alumni interviewer gave me exactly the kind of tough questions I 
@@ -114,7 +126,7 @@ const CareerGuidance = () => {
               - Ankit Verma, Software Engineer at Google
             </div>
           </div>
-          <div className="testimonial-card">
+          <div className="testimonial-card glass-card">
             <p>
               "My resume was getting no responses. After the alumni review, I 
               started getting interview calls within a week. The difference was 
@@ -127,12 +139,12 @@ const CareerGuidance = () => {
         </div>
       </div>
 
-      {/* Subscription Modal (same as before) */}
+      {/* Subscription Modal */}
       {showSubscriptionModal && (
         <div className="subscription-modal-overlay">
-          <div className="subscription-modal">
+          <div className="subscription-modal glass-card">
             <button 
-              className="close-modal-btn"
+              className="close-modal-btn glass-btn"
               onClick={toggleSubscriptionModal}
             >
               &times;
@@ -144,7 +156,7 @@ const CareerGuidance = () => {
               {subscriptionPlans.map((plan, index) => (
                 <div 
                   key={index} 
-                  className={`subscription-plan ${selectedPlan?.duration === plan.duration ? 'selected' : ''}`}
+                  className={`subscription-plan glass-card ${selectedPlan?.duration === plan.duration ? 'selected' : ''}`}
                   onClick={() => handlePlanSelect(plan)}
                 >
                   <h4>{plan.duration}</h4>
@@ -161,19 +173,19 @@ const CareerGuidance = () => {
             <div className="payment-options">
               <h4>Payment Methods</h4>
               <div className="payment-methods">
-                <div className="payment-method">
+                <div className="payment-method glass-btn">
                   <i className="fab fa-cc-paypal"></i>
                   <span>PayPal</span>
                 </div>
-                <div className="payment-method">
+                <div className="payment-method glass-btn">
                   <i className="fab fa-cc-stripe"></i>
                   <span>Stripe</span>
                 </div>
-                <div className="payment-method">
+                <div className="payment-method glass-btn">
                   <i className="fas fa-credit-card"></i>
                   <span>Credit Card</span>
                 </div>
-                <div className="payment-method">
+                <div className="payment-method glass-btn">
                   <i className="fas fa-university"></i>
                   <span>UPI</span>
                 </div>

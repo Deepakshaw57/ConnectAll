@@ -1,6 +1,6 @@
 {
   "name": "connectall-frontend",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -14,7 +14,7 @@
     "axios": "^1.10.0",
     "dayjs": "^1.11.13",
     "formik": "^2.4.6",
-    "framer-motion": "^12.23.3",
+    "framer-motion": "^12.23.22",
     "lodash": "^4.17.21",
     "moment": "^2.30.1",
     "react": "^19.1.0",
@@ -28,6 +28,7 @@
     "react-toastify": "^11.0.5",
     "redux-persist": "^6.0.0",
     "socket.io-client": "^4.8.1",
+    "three": "^0.179.1",
     "uuid": "^11.1.0",
     "web-vitals": "^2.1.4",
     "yup": "^1.6.1"
@@ -37,7 +38,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev": "nodemon server.js"
+    "dev": "react-scripts start"
   },
   "eslintConfig": {
     "extends": [

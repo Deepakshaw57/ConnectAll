@@ -1,30 +1,162 @@
 :root {
   --primary-color: #4a90e2;
   --primary-dark: #357ABD;
-  --secondary-color: #f0f2f5;
+  --secondary-color: #0a0a2a;
   --accent-color: #ff6b6b;
+  --space-dark: #0a0a2a;
+  --space-darker: #050518;
+  --star-color: #ffffff;
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-shadow: rgba(0, 0, 0, 0.1);
 }
 
 body {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: var(--secondary-color);
+  background-color: var(--space-dark);
+  color: #ffffff;
+  overflow-x: hidden;
 }
 
-header {
-  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+/* Space Background with Stars */
+.space-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(135deg, var(--space-darker) 0%, var(--space-dark) 50%, #1a1a3a 100%);
+}
+
+.stars, .stars-small, .stars-tiny {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.stars::after, .stars-small::after, .stars-tiny::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, var(--star-color), rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 40px 70px, var(--star-color), rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 90px 40px, var(--star-color), rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 130px 80px, var(--star-color), rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 160px 30px, var(--star-color), rgba(0,0,0,0));
+  background-repeat: repeat;
+  background-size: 200px 100px;
+  animation: stars-animation 60s linear infinite;
+}
+
+.stars-small::after {
+  background-image: 
+    radial-gradient(1px 1px at 50px 160px, var(--star-color), rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 90px 120px, var(--star-color), rgba(0,0,0,0)),
+    radial-gradient(0.5px 0.5px at 140px 180px, var(--star-color), rgba(0,0,0,0)),
+    radial-gradient(0.5px 0.5px at 180px 140px, var(--star-color), rgba(0,0,0,0));
+  animation: stars-animation 30s linear infinite;
+}
+
+.stars-tiny::after {
+  background-image: 
+    radial-gradient(0.5px 0.5px at 30px 200px, var(--star-color), rgba(0,0,0,0)),
+    radial-gradient(0.5px 0.5px at 80px 220px, var(--star-color), rgba(0,0,0,0)),
+    radial-gradient(0.3px 0.3px at 120px 240px, var(--star-color), rgba(0,0,0,0)),
+    radial-gradient(0.3px 0.3px at 160px 260px, var(--star-color), rgba(0,0,0,0));
+  animation: stars-animation 15s linear infinite;
+}
+
+@keyframes stars-animation {
+  from { transform: translateY(0); }
+  to { transform: translateY(-100px); }
+}
+
+.about-page {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+}
+
+/* Glassmorphism Styles */
+.glass-header {
+  background: rgba(74, 144, 226, 0.15) !important;
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.glass-nav {
+  background: rgba(53, 122, 189, 0.15) !important;
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.glass-hero {
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(25px);
+  border: 1px solid var(--glass-border);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  color: #ffffff;
+}
+
+.glass-btn {
+  background: rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+}
+
+.glass-text {
+  background: transparent;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.glass-link {
+  background: transparent;
+  color: #a8d0ff !important;
+}
+
+.glass-image {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+}
+
+.glass-footer {
+  background: rgba(53, 122, 189, 0.15) !important;
+  backdrop-filter: blur(20px);
+  border-top: 1px solid var(--glass-border);
+}
+
+/* Header Styles */
+.about-header {
+  background: transparent;
   color: white;
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 100;
 }
 
 .title h1 {
   margin: 0;
   font-size: 1.8rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .title p {
@@ -40,68 +172,99 @@ header {
 }
 
 .signin-btn {
-  background-color: white;
-  color: var(--primary-color);
+  background: transparent;
+  color: white;
   border: none;
   padding: 0.6rem 1.2rem;
   border-radius: 30px;
   cursor: pointer;
   font-weight: bold;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .signin-btn:hover {
+  background: rgba(255, 255, 255, 0.3) !important;
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-nav {
+/* Navigation Styles */
+.about-nav {
   display: flex;
   justify-content: center;
-  background-color: var(--primary-dark);
+  background: transparent;
   position: sticky;
   top: 0;
   z-index: 100;
 }
 
-nav a {
-  color: white;
+.about-nav a {
+  color: rgb(255, 255, 255);
   padding: 1rem 1.5rem;
   text-decoration: none;
   transition: all 0.3s ease;
   font-weight: 500;
+  position: relative;
+  display: inline-block;
+  backdrop-filter: blur(10px);
 }
 
-nav a:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+.about-nav a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
 }
 
+.about-nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0.8rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  height: 2px;
+  background-color: rgb(255, 255, 255);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+  transform-origin: center;
+}
+
+.about-nav a:hover::after {
+  transform: scaleX(1);
+}
+
+/* Container and Content Styles */
 .container {
   padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
 }
 
 .hero {
-  background-color: white;
+  background: transparent;
   padding: 3rem 2rem;
   text-align: center;
-  border-radius: 8px;
+  border-radius: 20px;
   margin-bottom: 2rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #ffffff, #a8d0ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .card {
-  background: white;
   padding: 2rem;
   margin: 2rem 0;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  background: transparent;
 }
 
 .card h2 {
-  color: var(--primary-dark);
+  color: #ffffff;
+  margin-top: 0;
 }
 
 .about-section {
@@ -113,27 +276,37 @@ nav a:hover {
 
 .about-card {
   flex: 1 1 300px;
-  background: white;
   padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  background: transparent;
 }
 
 .about-card h3 {
-  color: var(--primary-dark);
+  color: #ffffff;
   margin-top: 0;
 }
 
 .about-card ul {
   padding-left: 1.2rem;
+  color: #e0e0e0;
 }
 
+.about-card li {
+  margin-bottom: 0.5rem;
+}
+
+/* College Section */
 .college-list {
   margin-top: 3rem;
 }
 
 .college-category {
   margin: 2rem 0;
+}
+
+.college-category h3 {
+  color: white;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .college-grid {
@@ -144,15 +317,14 @@ nav a:hover {
 }
 
 .college-item {
-  background: white;
-  border-radius: 8px;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   flex: 1 1 250px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  background: transparent;
 }
 
 .college-img {
@@ -163,133 +335,312 @@ nav a:hover {
 
 .college-info {
   padding: 1rem;
+  background: transparent;
 }
 
 .college-info h4 {
   margin: 0.5rem 0 0.2rem;
-  color: var(--primary-dark);
+  color: #ffffff;
 }
 
+.college-info p {
+  color: #e0e0e0;
+}
+
+.college-details-link {
+  color: #a8d0ff;
+  text-decoration: none;
+  font-weight: 500;
+  margin-top: 0.5rem;
+  display: inline-block;
+  transition: all 0.3s ease;
+  background: transparent;
+}
+
+.college-details-link:hover {
+  color: #ffffff;
+  transform: translateX(5px);
+}
+
+/* Team Section */
 .team-section {
-      padding: 4rem 2rem;
-      background: #f8f9fa;
-    }
-    
-    .card {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-      padding: 2.5rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    
-    .team-section h2 {
-      text-align: center;
-      font-size: 2.2rem;
-      margin-bottom: 1rem;
-      color: #2c3e50;
-    }
-    
-    .team-description {
-      text-align: center;
-      color: #7f8c8d;
-      margin-bottom: 3rem;
-      font-size: 1.1rem;
-    }
-    
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      justify-items: center;
-    }
-    
-    .team-member {
-      text-align: center;
-      transition: all 0.3s ease;
-      padding: 1.5rem;
-      border-radius: 8px;
-      background: #fff;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    }
-    
-    .team-member:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-    }
-    
-    .member-image-container {
-      position: relative;
-      width: 150px;
-      height: 150px;
-      margin: 0 auto 1.5rem;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 4px solid #e0e0e0;
-    }
-    
-    .team-photo {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: all 0.3s ease;
-    }
-    
-    .linkedin-link {
-      position: absolute;
-      bottom: -30px;
-      left: 50%;
-      transform: translateX(-50%);
-      opacity: 0;
-      transition: all 0.3s ease;
-      background: #0077b5;
-      padding: 8px;
-      border-radius: 50%;
-      width: 36px;
-      height: 36px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .linkedin-icon {
-      width: 20px;
-      height: 20px;
-      filter: brightness(0) invert(1);
-    }
-    
-    .team-member:hover .linkedin-link {
-      bottom: 10px;
-      opacity: 1;
-    }
-    
-    .team-member:hover .team-photo {
-      filter: brightness(0.9);
-    }
-    
-    .team-member h4 {
-      margin: 0.5rem 0;
-      color: #2c3e50;
-      font-size: 1.3rem;
-    }
-    
-    .team-member p {
-      margin: 0.3rem 0;
-      color: #7f8c8d;
-      font-size: 0.95rem;
-    }
-    
-    .team-member p:last-child {
-      color: #95a5a6;
-      font-size: 0.85rem;
-    }
+  padding: 4rem 2rem;
+  background: transparent;
+}
+
+.team-section h2 {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+}
+
+.team-member {
+  text-align: center;
+  transition: all 0.3s ease;
+  padding: 1.5rem;
+  border-radius: 20px;
+  background: transparent;
+}
+
+.team-member:hover {
+  transform: translateY(-8px);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.member-image-container {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 1.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+  background: transparent;
+}
+
+.team-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.3s ease;
+}
+
+.linkedin-link {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: all 0.3s ease;
+  background: #0077b5;
+  padding: 8px;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.linkedin-icon {
+  width: 20px;
+  height: 20px;
+  filter: brightness(0) invert(1);
+}
+
+.team-member:hover .linkedin-link {
+  bottom: 10px;
+  opacity: 1;
+}
+
+.team-member:hover .team-photo {
+  transform: scale(1.05);
+}
+
+.team-member h4 {
+  margin: 0.5rem 0;
+  color: #ffffff;
+  font-size: 1.3rem;
+}
+
+.team-member p {
+  margin: 0.3rem 0;
+  color: #e0e0e0;
+  font-size: 0.95rem;
+}
+
+.team-member p:last-child {
+  color: #b0b0b0;
+  font-size: 0.85rem;
+}
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.feature-item {
+  text-align: center;
+  padding: 1.5rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.feature-item:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.feature-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.feature-item h4 {
+  color: #ffffff;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.feature-item p {
+  color: #e0e0e0;
+  line-height: 1.6;
+}
+/* Process Steps */
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.process-step {
+  text-align: center;
+  position: relative;
+}
+
+.step-number {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  box-shadow: 0 5px 15px rgba(74, 144, 226, 0.3);
+}
+
+.process-step h4 {
+  color: #ffffff;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.process-step p {
+  color: #e0e0e0;
+  line-height: 1.5;
+}
+
+/* CTA Buttons */
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.cta-button {
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-align: center;
+  min-width: 150px;
+}
+
+.cta-button.primary {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  color: white;
+  border: 2px solid transparent;
+}
+
+.cta-button.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(74, 144, 226, 0.4);
+}
+
+.cta-button.secondary {
+  background: transparent;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+}
+
+.cta-button.secondary:hover {
+  background: rgba(74, 144, 226, 0.1);
+  transform: translateY(-2px);
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+  .mission-stats {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .process-steps {
+    grid-template-columns: 1fr;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .cta-button {
+    width: 100%;
+    max-width: 250px;
+  }
+}
+
+/* Animation enhancements */
+.feature-item, .impact-story, .process-step {
+  animation: fadeInUp 0.6s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Glass morphism enhancements */
+.card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  padding: 2rem;
+  margin: 2rem 0;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Footer */
 .footer {
   text-align: center;
   padding: 2rem;
-  background-color: var(--primary-dark);
+  background: transparent;
   color: white;
   margin-top: 4rem;
+  position: relative;
 }
 
 .footer-links {
@@ -302,13 +653,16 @@ nav a:hover {
 .footer-links a {
   color: white;
   text-decoration: none;
+  transition: all 0.3s ease;
+  background: transparent;
 }
 
 .footer-links a:hover {
   text-decoration: underline;
+  transform: translateY(-2px);
 }
 
-/* Responsive */
+/* Responsive Design */
 @media (max-width: 768px) {
   .about-section {
     flex-direction: column;
@@ -319,6 +673,38 @@ nav a:hover {
   }
 
   .team-grid {
-    flex-direction: column;
+    grid-template-columns: 1fr;
   }
+
+  .about-nav {
+    flex-wrap: wrap;
+  }
+
+  .about-nav a {
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .container {
+    padding: 1rem;
+  }
+
+  .hero {
+    padding: 2rem 1rem;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+}
+
+/* Text Content Styling */
+p, li {
+  color: #e0e0e0;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
